@@ -1,0 +1,46 @@
+body{
+	background-image:url("../img/tile.jpg")
+}
+.loginPage{
+	width:100%;
+	height:100vh;
+	background:url("../img/classroom.jpg") ;
+	background-size: cover;
+	position: relative;
+
+}
+.loginPanel{
+	margin-top:30%;
+}
+.panel-heading{
+	margin-bottom:1px;
+}
+.lec-details{
+	list-style: none;
+}
+table{
+	background-color: white;
+	margin-top:50px;
+}
+.navbar.navbar-default a{
+	color: #efb71d;
+}
+.navbar.navbar-default li a{
+	color: #efb71d;
+}
+.addLec{
+	margin-top:10%;
+	background-color: white;
+	padding: 20px;
+}
+.addLec input{
+	padding:20px;
+	margin-top: 10px;
+
+}
+.addLec .alert{
+	padding:20px;
+	font-size:0.9em;
+	margin-top: 10px;
+
+}
