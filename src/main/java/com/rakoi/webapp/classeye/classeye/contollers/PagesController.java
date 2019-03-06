@@ -10,8 +10,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -33,7 +37,7 @@ public class PagesController {
         User user=userRepository.findByUsername(authentication.getName());
 
         boolean isAdmin=user.getRoles().contains(role);
-        System.out.println(isAdmin);
+
         if (isAdmin){
 
             return "admin/addLecturer";
@@ -73,15 +77,54 @@ public class PagesController {
     public String addLec(ModelMap modelMap){
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 
+        List<Role> roles=roleRepository.findAll();
         modelMap.addAttribute("username",authentication.getName());
+
+
+
 
         return "admin/addLecturer";
     }
+
+    @RequestMapping(value = "/admin/addLecturer",method = RequestMethod.POST)
+    public String addLec(ModelMap modelMap, @ModelAttribute("user")User user,@ModelAttribute("accountType")String accountType){
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+        String roleName;
+        modelMap.addAttribute("username",authentication.getName());
+
+        //get user from url
+        User saveUser=user;
+        saveUser.setPassword(encoder.encode(user.getPassword()));
+        //save user from url
+        userRepository.save(saveUser);
+
+        //get user role
+        HashSet<Role> roles=new HashSet<>();
+
+        if (accountType.equals("admin")){
+            roles.add(roleRepository.getOne(1));
+        }else {
+            roles.add(roleRepository.getOne(2));
+        }
+
+        //find saved user
+        User userWithRole=userRepository.findByUsername(user.getUsername());
+
+        userWithRole.setRoles(roles);
+
+        userRepository.save(userWithRole);
+
+        modelMap.put("msg","Added Successfully");
+
+        return "admin/addLecturer";
+    }
+
     @RequestMapping(value = "/admin/assignUnits",method = RequestMethod.GET)
     public String addLec(String username, String password, ModelMap modelMap){
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 
         modelMap.addAttribute("username",authentication.getName());
+
 
 
         return "admin/assignLecturerUnits";

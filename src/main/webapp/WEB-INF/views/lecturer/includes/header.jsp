@@ -16,7 +16,7 @@
     </div>
     <ul class="nav navbar-nav pull-right">
 
-        <li><a href="/records">Records</a></li>
+        <li><a href="/records">Attendance Records</a></li>
 
         <li>
             <a href=""data-toggle="dropdown">${username} <span class="caret"></span></a></a>

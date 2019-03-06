@@ -1,5 +1,5 @@
 body{
-	background-image:url("../img/tile.jpg")
+	background-image:url("../img/tile2.jpg")
 }
 .loginPage{
 	width:100%;
@@ -8,6 +8,9 @@ body{
 	background-size: cover;
 	position: relative;
 
+}
+.barcode{
+	margin-bottom: 20px;
 }
 .loginPanel{
 	margin-top:30%;

@@ -8,6 +8,7 @@ public class ClasseyeApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ClasseyeApplication.class, args);
+        System.out.println("READY");
     }
 
 }

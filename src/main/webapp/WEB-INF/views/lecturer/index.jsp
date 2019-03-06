@@ -18,7 +18,7 @@
                 Time:<i class="pull-right">8:30 P.M</i>
             </div>
         </div>
-        <img src="img/frame.png" width="400" height="400" class="barcode">
+        <img src="img/frame.png" width="410" height="380" class="barcode">
     </div>
     <!-- End of Session place -->
 
