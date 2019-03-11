@@ -13,8 +13,11 @@ public interface LessonRepository extends JpaRepository<Lesson,Integer> {
 
     List<Lesson> findLessonsByNameContaining(String lessonName);
     Lesson findLessonsByName(String name);
+    Lesson findLessonsByUnitcode(String unitCode);
 
     List<Lesson> findLessonsByUsers(User user);
+
+
 
     @Query(value =
             "SELECT l FROM Lesson l WHERE day=:day and ltime between :ltime and :endtime ")

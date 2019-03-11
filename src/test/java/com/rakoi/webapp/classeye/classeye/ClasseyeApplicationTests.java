@@ -28,6 +28,10 @@ import java.util.*;
 public class ClasseyeApplicationTests {
 
     @Autowired
+    BCryptPasswordEncoder encoder;
+
+
+    @Autowired
     UserRepository userRepository;
 
     @Autowired
@@ -52,8 +56,9 @@ public class ClasseyeApplicationTests {
 
     @Test
     public void  addStudent(){
-        Student student=new Student("JKC/D01/0210/2014","Brian","Rakoi");
-       // studentRepository.save(student);
+        Student student=new Student("JKC/D01/0211/2015","Brian","Rakoi");
+        student.setPassword(encoder.encode(student.getAdmnumber()));
+        studentRepository.save(student);
 
     }
 
@@ -114,7 +119,25 @@ public class ClasseyeApplicationTests {
     }
 
 
+    @Test
+    public void getRecords() {
+
+        Student student = studentRepository.getOne(1);
+        List<Lesson> lessons = lessonRepository.findAll();
+        List<Attendance> attendanceList=attendanceRepository.findAll();
 
 
+        HashMap<Lesson,Integer> attendanceHashMap=new HashMap<>();
+
+
+
+       for (Lesson lesson:lessons){
+         attendanceHashMap.put(lesson,0);
+           if (attendanceHashMap.containsKey(lesson)){
+               attendanceHashMap.computeIfPresent(lesson,(k,v)->v+attendanceRepository.findAttendanceByLessonAndAndStudent(lesson,student).size());
+           }
+       }
+
+    }
 
 }
