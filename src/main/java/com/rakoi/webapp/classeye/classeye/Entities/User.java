@@ -1,11 +1,17 @@
 package com.rakoi.webapp.classeye.classeye.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
+
 public class User {
     @Id
     public int id;
@@ -24,6 +30,7 @@ public class User {
         this.lessons = lessons;
     }
 
+    @JsonBackReference
     @ManyToMany
     @JoinTable(name = "user_role",joinColumns =@JoinColumn(name ="user_id"),inverseJoinColumns=@JoinColumn(name = "role_id") )
     public Set<Role> roles;
@@ -37,6 +44,7 @@ public class User {
     }
 
     @OneToMany(mappedBy = "users")
+
     public Set<Lesson> lessons=new HashSet<>();
 
 

@@ -8,15 +8,12 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import javax.naming.ConfigurationException;
 
 @SpringBootApplication
-public class ClasseyeApplication  extends SpringBootServletInitializer {
+public class ClasseyeApplication  {
 
     public static void main(String[] args) {
         SpringApplication.run(ClasseyeApplication.class, args);
         System.out.println("READY");
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return super.configure(builder);
-    }
+
 }

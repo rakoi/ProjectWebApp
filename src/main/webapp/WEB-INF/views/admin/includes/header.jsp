@@ -8,6 +8,7 @@
     <link  href="/css/custom.css" rel="stylesheet"></link>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/my.js"></script>
     <title>Servlet</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
         <a class="navbar-brand" href="/admin">ClassEye Admin Panel</a>
     </div>
     <ul class="nav navbar-nav pull-right">
-        <li><a href="/admin">Add Lecturer</a></li>
+        <li><a href="/admin">Add User</a></li>
         <li><a href="/admin/assignUnits">Add Lecturer Units</a></li>
 
         <li>

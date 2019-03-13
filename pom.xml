@@ -12,6 +12,7 @@
     <artifactId>classeye</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>classeye</name>
+    <packaging>war</packaging>
     <description>Class Eye Web App</description>
 
     <properties>
@@ -54,6 +55,22 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.glxn</groupId>
+            <artifactId>qrgen</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+
 
     </dependencies>
 

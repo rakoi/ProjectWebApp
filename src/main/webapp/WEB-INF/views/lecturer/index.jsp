@@ -11,14 +11,27 @@
                 <hr>
             </div>
             <div class="panel-body">
-                Course: <i class="pull-right">Bsc It</i>
+                Unit Code: <i class="pull-right">${lesson.unitcode}</i>
                 <br>
-                Unit: <i class="pull-right">Object Oriented Programming</i>
+                Unit: <i class="pull-right">${lesson.name}</i>
                 <br>
-                Time:<i class="pull-right">8:30 P.M</i>
+                Time:<i class="pull-right">
+                        ${lesson.ltime}
+
+            </i>
             </div>
         </div>
-        <img src="img/frame.png" width="410" height="380" class="barcode">
+
+
+        <c:if test="${imageUrl!=null}">
+          <a href="${imageUrl}">  <img src="${imageUrl}" width="410" height="400" class="barcode"></a>
+        </c:if>
+
+        <c:if test="${imageUrl==null}">
+            <img src="/img/lesson.png" width="370" height="300" class="barcode">
+        </c:if>
+
+
     </div>
     <!-- End of Session place -->
 
@@ -36,7 +49,7 @@
                         </thead>
                         <tr>
                             <td><b>Name</b></td>
-                            <td>Peter Griffin</td>
+                            <td>${username}</td>
                         </tr>
                         <tr>
                             <td><b>Department</b></td>
@@ -47,21 +60,13 @@
                                 <h4><b>Lessons</b></h4>
                             <td>
                                 <ul class="lec-details">
+                                    <c:forEach items="${lessons}" var="lesson" >
                                     <li>
-                                        Object Oriented Programming
-                                        <i class="pull-right">Monday 8:30am</i>
+                                       ${lesson.name}
+                                        <i class="pull-right">${lesson.day} ${lesson.ltime}</i>
                                         <hr>
                                     </li>
-                                    <li>
-                                        Application Programming
-                                        <i class="pull-right">Monday 2:30am</i>
-                                        <hr>
-                                    </li>
-                                    <li>
-                                        Web Development
-                                        <i class="pull-right">Wednesday 11:00am</i>
-                                        <hr>
-                                    </li>
+                                    </c:forEach>
                                 </ul>
 
                             </td>

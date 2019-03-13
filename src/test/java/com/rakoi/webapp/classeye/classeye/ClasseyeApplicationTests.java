@@ -1,7 +1,11 @@
 package com.rakoi.webapp.classeye.classeye;
 
 import com.rakoi.webapp.classeye.classeye.Entities.*;
+import com.rakoi.webapp.classeye.classeye.Services.LessonService;
 import com.rakoi.webapp.classeye.classeye.repos.*;
+import com.rakoi.webapp.classeye.classeye.utils.QRgeneratorUtil;
+import com.rakoi.webapp.classeye.classeye.utils.myTimeUtils;
+import org.assertj.core.util.DateUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +13,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,6 +31,9 @@ public class ClasseyeApplicationTests {
     UserRepository userRepository;
 
     @Autowired
+    QRgeneratorUtil qRgeneratorUtil;
+
+    @Autowired
     RoleRepository roleRepository;
 
     @Autowired
@@ -31,6 +41,9 @@ public class ClasseyeApplicationTests {
 
     @Autowired
     LessonRepository lessonRepository;
+
+    @Autowired
+    LessonService lessonService;
 
 
 
@@ -73,23 +86,23 @@ public class ClasseyeApplicationTests {
         List Roles=roleRepository.findAll();
         System.out.println(Roles);
     }
+
+    @Test
+    public void testQrGenerator() throws IOException {
+
+
+            qRgeneratorUtil.generateQrCodeImage("my name is earl");
+
+
+    }
+
+
     @Test
     public void contextLoads() {
     }
 
-    @Test
-    public void addUser(){
-//          User user=new User("Brian","secret");
-//        HashSet<Role> roles=new HashSet<>();
-//        roles.add(roleRepository.getOne(1));
-//        userRepository.save(user);
-//        User savedUser=userRepository.findByUsername(user.getUsername());
-//        savedUser.setUsername("MOJOJOJO");
-//
-//        savedUser.setRoles(roles);
-//        System.out.println(savedUser.getId());
-//
-//        userRepository.save(savedUser);
-    }
+
+
+
 
 }
