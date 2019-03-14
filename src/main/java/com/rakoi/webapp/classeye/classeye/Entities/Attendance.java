@@ -35,6 +35,14 @@ public class Attendance {
         return id;
     }
 
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
+
     public Time getTime() {
         return time;
     }

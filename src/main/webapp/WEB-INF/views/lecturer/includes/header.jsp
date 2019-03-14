@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link  href="css/bootstrap.css" rel="stylesheet" ></link>
-    <link  href="css/bootstrap-theme.css" rel="stylesheet"></link>
-    <link  href="css/custom.css" rel="stylesheet"></link>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link  href="/css/bootstrap.css" rel="stylesheet" ></link>
+    <link  href="/css/bootstrap-theme.css" rel="stylesheet"></link>
+    <link  href="/css/custom.css" rel="stylesheet"></link>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <title>Servlet</title>
 </head>
 <body>

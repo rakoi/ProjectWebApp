@@ -88,14 +88,26 @@ public class ClasseyeApplicationTests {
     }
 
     @Test
-    public void testQrGenerator() throws IOException {
+    public void getSingleLesson(){
+        User user=userRepository.getOne(14);
 
+        Lesson lesson=lessonRepository.getOne(1);
+        List<Attendance> attendanceList=attendanceRepository.findByLesson(lesson);
 
-            qRgeneratorUtil.generateQrCodeImage("my name is earl");
+        HashMap<Student,Integer> studentIntegerHashMap=new HashMap<>();
 
+        for (Attendance at :attendanceList){
+            if (studentIntegerHashMap.containsKey(at.getStudent())){
+                studentIntegerHashMap.computeIfPresent(at.getStudent(),(k,v)->v+1);
+            }else{
+                studentIntegerHashMap.put(at.student,0);
+            }
+        }
 
+        for(Student student:studentIntegerHashMap.keySet()){
+            System.out.println(student.getFirstname()+studentIntegerHashMap.get(student));
+        }
     }
-
 
     @Test
     public void contextLoads() {

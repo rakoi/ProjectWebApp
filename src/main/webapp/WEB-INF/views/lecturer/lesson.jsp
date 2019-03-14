@@ -5,17 +5,19 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Lesson</th>
+                <th>Student</th>
                 <th>Attendance</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="lessonMap" items="${lessons}">
+            ${studentAttendance.size()}
+            <c:forEach var="attendance" items="${studentAttendance}">
                 <tr>
-                    <td><b><a href="/lesson/${lessonMap.key.getName()}">${lessonMap.key.getName()}</a></b></td>
-                    <td>${lessonMap.value}</td>
+                    <td><b>${attendance.key.firstname} ${attendance.key.lastname} </b></td>
+                    <td>${attendance.value} out of 12</td>
                 </tr>
             </c:forEach>
+
             </tbody>
         </table>
 
