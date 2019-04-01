@@ -36,11 +36,15 @@ public class StudentApi {
 
     @PostMapping("login")
     public Student login(@RequestBody Student student){
+
         Student getstudent=studentRepository.findStudentByAdmnumber(student.getAdmnumber());
-        if (getstudent.getPassword().equals(encoder.encode(student.getPassword()))){
+
+
+        if (getstudent.getPassword().equals(student.getPassword())){
             return getstudent;
-        }else{
-            return new Student();
+
+        }else {
+            return null;
         }
 
     }
@@ -53,14 +57,14 @@ public class StudentApi {
     public Student getStudent(HttpServletRequest request){
 
         String requesturl=request.getRequestURL().toString();
-        String admno=requesturl.replace("http://localhost:8090/api/student/","");
+        String admno=requesturl.replace("http://localhost:8080/api/student/","");
         return studentRepository.findStudentByAdmnumber(admno);
     }
 
-    @GetMapping({"{StudentId}/{UnitCode}"})
-    public Attendance checkIn(@PathVariable("StudentId")String StudentId,@PathVariable("UnitCode")String UnitCode){
+    @GetMapping({"{StudentId}/{LessonName}"})
+    public Attendance checkIn(@PathVariable("StudentId")String StudentId,@PathVariable("LessonName")String LessonName){
 
-        Lesson lesson=lessonRepository.findLessonsByUnitcode(UnitCode);
+        Lesson lesson=lessonRepository.findLessonsByName(LessonName);
         Student student=studentRepository.getOne(Integer.parseInt(StudentId));
 
         Time time=new Time(System.currentTimeMillis());

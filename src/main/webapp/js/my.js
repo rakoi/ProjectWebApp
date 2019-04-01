@@ -6,7 +6,7 @@ function getLecturer(e) {
     $('#lecturers').empty();
 
     if(name.length>0){
-        fetch('http://localhost:8090/api/lecturer/'+name).then(
+        fetch('http://localhost:8080/api/lecturer/'+name).then(
             function(response){
                 return response.json();
             }).then(function(myJson){
@@ -41,7 +41,7 @@ function getUnit1(e) {
     $('#unitslist').empty();
 
     if(unit.length>0){
-        fetch('http://localhost:8090/api/lessons/'+unit).then(
+        fetch('http://localhost:8080/api/lessons/'+unit).then(
             function(response){
                 return response.json();
             }).then(function(myJson){
@@ -78,7 +78,7 @@ function getUnit2(e) {
     $('#units2list').empty();
 
     if(unit.length>0){
-        fetch('http://localhost:8090/api/lessons/'+unit).then(
+        fetch('http://localhost:8080/api/lessons/'+unit).then(
             function(response){
                 return response.json();
             }).then(function(myJson){
@@ -114,7 +114,7 @@ function getUnit3(e) {
     $('#units3list').empty();
 
     if(unit.length>0){
-        fetch('http://localhost:8090/api/lessons/'+unit).then(
+        fetch('http://localhost:8080/api/lessons/'+unit).then(
             function(response){
                 return response.json();
             }).then(function(myJson){
